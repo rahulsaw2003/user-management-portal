@@ -19,15 +19,10 @@ const Home = () => {
 	const [itemOffset, setItemOffset] = useState(0);
 	const [pageCount, setPageCount] = useState(0);
 	const navigate = useNavigate();
-	const [visited, setvisited] = useState("");
 
 	useEffect(() => {
-		if (!visited) {
-			toast.info("Please wait until the details get loaded!");
-			setvisited(true); // Marking the page as visited
-		}
 		getUserDetails();
-	}, [visited]);
+	}, []);
 
 	const getUserDetails = async () => {
 		const response = await getAllUsers();

@@ -10,24 +10,27 @@ import DefineTeam from "./components/DefineTeam";
 import TeamDetails from "./components/TeamDetails";
 import CreateUser from "./components/CreateUser";
 import About from "./components/About";
+import { UserProvider } from "./context/users";
 
 function App() {
 	return (
 		<>
-			<Router>
-				<Navbar />
-				<Routes>
-					<Route path="/" element={<Home />} />
-					<Route path="/users/create" element={<CreateUser />} />
-					<Route path="/users/update/:id" element={<UpdateUser />} />
-					<Route path="/about" element={<About />} />
-					<Route path="/team/select" element={<SelectTeam />} />
-					<Route path="/team/create" element={<DefineTeam />} />
-					<Route path="/team/view" element={<ViewTeam />} />
-					<Route path="/team/:id" element={<TeamDetails />} />
-				</Routes>
-			</Router>
-			<ToastContainer />
+			<UserProvider>
+				<Router>
+					<Navbar />
+					<Routes>
+						<Route path="/" element={<Home />} />
+						<Route path="/users/create" element={<CreateUser />} />
+						<Route path="/users/update/:id" element={<UpdateUser />} />
+						<Route path="/about" element={<About />} />
+						<Route path="/team/select" element={<SelectTeam />} />
+						<Route path="/team/create" element={<DefineTeam />} />
+						<Route path="/team/view" element={<ViewTeam />} />
+						<Route path="/team/:id" element={<TeamDetails />} />
+					</Routes>
+				</Router>
+				<ToastContainer />
+			</UserProvider>
 		</>
 	);
 }
